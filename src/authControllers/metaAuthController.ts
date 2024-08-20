@@ -3,7 +3,7 @@ const querystring = require('querystring');
 
 const axios = require('axios');
 
-export const buildRedirectUrl = (metaOauthCredential: oauthCredential) : string => {
+export const buildLoginUrl = (metaOauthCredential: oauthCredential) : string => {
 
     const authUrl = 'https://www.facebook.com/v20.0/dialog/oauth';
 
