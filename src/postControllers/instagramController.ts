@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Post, PostType, Connection, PostStatus} from '../types';
+import { Post, PostType, PageConnection, PostStatus} from '../types';
 
-export const postToInstagram = async (post: Post, connection: Connection) : Promise<PostStatus> => {
+export const postToInstagram = async (post: Post, page: PageConnection) : Promise<PostStatus> => {
 
     let status: PostStatus;
 

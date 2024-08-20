@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Post, PostType, Connection, PostStatus} from '../types';
+import { Post, PostType, PageConnection, PostStatus} from '../types';
 
-export const postToFacebook = async (post: Post, connection: Connection) : Promise<PostStatus> => {
+export const postToFacebook = async (post: Post, page: PageConnection) : Promise<PostStatus> => {
 
     let status: PostStatus;
 
@@ -11,27 +11,25 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
         if (post.type == PostType.Text){
             response = await axios.post(`https://graph.facebook.com/v20.0/me/feed`, {
                 message: post.content,
-                access_token: connection.accessToken,
+                access_token: page.accessToken,
                 });
         } else if (post.type == PostType.Link){
             response = await axios.post(`https://graph.facebook.com/v20.0/me/feed`, {
                 message: post.content,
                 link: post.linkUrl,
-                access_token: connection.accessToken,
+                access_token: page.accessToken,
               });
         } else if (post.type == PostType.Image){
             response = await axios.post(`https://graph.facebook.com/v20.0/me/photos`, {
                 url: post.mediaUrl,
                 caption: post.content,
-                access_token: connection.accessToken,
+                access_token: page.accessToken,
               });
         
         }
 
         if (response && response.data) {
             console.log('Facebook API response:', response.data);
-
-            let postUrl: string;
 
             status = {
                 success: true,
