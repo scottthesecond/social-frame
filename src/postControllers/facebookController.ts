@@ -6,6 +6,7 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
     let status: PostStatus;
 
     try{
+
         let response;
         if (post.type == PostType.Text){
             response = await axios.post(`https://graph.facebook.com/v20.0/me/feed`, {
@@ -18,7 +19,6 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
                 link: post.linkUrl,
                 access_token: connection.accessToken,
               });
-        
         } else if (post.type == PostType.Image){
             response = await axios.post(`https://graph.facebook.com/v20.0/me/photos`, {
                 url: post.mediaUrl,
@@ -44,7 +44,9 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
                 error: "FaceBook API response is undefined or missing data."
             }
           }
+
     } catch (err: any) {
+
         if (axios.isAxiosError(err) && err.response) {
             status = {
                 status:  PostStatusOption.Failed,
@@ -56,6 +58,7 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
                 error: err.message
             }
         }
+        
     }
 
     return status;
