@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Post, PostType, Connection, PostStatus, PostStatusOption} from '../types';
+import { Post, PostType, Connection, PostStatus} from '../types';
 
 export const postToLinkedIn = async (post: Post, connection: Connection) : Promise<PostStatus> => {
 

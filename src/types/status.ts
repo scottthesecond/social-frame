@@ -1,12 +1,6 @@
 export interface PostStatus {
-    status: PostStatusOption;
+    success: boolean;
     postUrl?: string;
     error?: any;
     // Additional fields
   }
-
-export enum PostStatusOption {
-    Successful = 'Successful',
-    Failed = 'Failed'
-}
-

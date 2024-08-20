@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Post, PostType, Connection, PostStatus, PostStatusOption} from '../types';
+import { Post, PostType, Connection, PostStatus} from '../types';
 
 export const postToFacebook = async (post: Post, connection: Connection) : Promise<PostStatus> => {
 
@@ -34,13 +34,13 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
             let postUrl: string;
 
             status = {
-                status: PostStatusOption.Successful,
+                success: true,
                 postUrl: `https://www.facebook.com/${response.data.id || response.data.post_id}`
             }
 
           } else {
             status = {
-                status:  PostStatusOption.Failed,
+                success: false,
                 error: "FaceBook API response is undefined or missing data."
             }
           }
@@ -49,16 +49,16 @@ export const postToFacebook = async (post: Post, connection: Connection) : Promi
 
         if (axios.isAxiosError(err) && err.response) {
             status = {
-                status:  PostStatusOption.Failed,
+                success: false,
                 error: err.response.data
             }
         } else {
             status = {
-                status:  PostStatusOption.Failed,
+                success: false,
                 error: err.message
             }
         }
-        
+
     }
 
     return status;
