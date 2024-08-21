@@ -71,7 +71,7 @@ export class MetaAuthController implements AuthController{
         
       for (const page of pages) {
         if (page.accessToken) {
-          const igResponse = await axios.get(`https://graph.facebook.com/v20.0/${page.id}?fields=instagram_business_account`, {
+          const igResponse = await axios.get(`https://graph.facebook.com/v20.0/${page.pageId}?fields=instagram_business_account`, {
             params: {
               access_token: page.accessToken,
             }
