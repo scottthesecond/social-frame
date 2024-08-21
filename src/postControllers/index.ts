@@ -1,3 +1,3 @@
 export * from './facebookConnection';
-export * from './instagramController';
-export * from './linkedinController';
+export * from './instagramConnection';
+export * from './linkedinConnection';
