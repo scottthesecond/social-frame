@@ -1,7 +1,7 @@
 import { oauthCredential, Platforms, Token } from "../types";
 
 import { AuthController } from "./authController";
-import { PageConnection } from "../postControllers";
+import { LinkedInConnection, PageConnection } from "../postControllers";
 
 const axios = require('axios');
 
@@ -58,9 +58,34 @@ export class LinkedInAuthController implements AuthController{
 
     }
 
-    fetchPages(token: Token): Promise<PageConnection[]> {
-        throw new Error("Method not implemented.");
-        //TODO: fetch pages
+    async fetchPages(token: Token): Promise<PageConnection[]> {
+
+        const orgResponse = await axios.get('https://api.linkedin.com/v2/organizationAcls?q=roleAssignee', {
+            headers: {
+            Authorization: `Bearer ${token.token}`,
+            'Linkedin-Version': '202404'
+            },
+        });
+
+        console.log('Organizations response:', orgResponse.data);
+
+        // Extract organization IDs from URNs
+        const organizationIds = orgResponse.data.elements.map((org: { organization: string; }) => org.organization.split(':').pop());
+
+        // Fetch organization details
+        const organizations = await Promise.all(organizationIds.map(async (id: any) => {
+            const orgDetailsResponse = await axios.get(`https://api.linkedin.com/rest/organizations/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token.token}`,
+                'Linkedin-Version': '202404'
+            }
+            });
+
+            const organization = orgDetailsResponse.data;
+            return new LinkedInConnection(token.token, organization.id, organization.localizedName);
+        }));
+
+        return organizations;
 
     }
 

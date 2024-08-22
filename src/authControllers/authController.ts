@@ -1,4 +1,5 @@
-import { oauthCredential, PageConnection, Token } from "../types";
+import { Token } from "../types";
+import { PageConnection } from "../postControllers";
 
 export interface AuthController {
     buildLoginUrl(): string;
