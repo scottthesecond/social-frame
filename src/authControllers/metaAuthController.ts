@@ -1,5 +1,6 @@
-import { oauthCredential, PageConnection, Platforms, Token } from "../types";
+import { oauthCredential, Platforms, Token } from "../types";
 import { AuthController } from "./authController";
+import { FacebookConnection, InstagramConnection, PageConnection } from "../postControllers";
 
 const axios = require('axios');
 
@@ -60,10 +61,9 @@ export class MetaAuthController implements AuthController{
         },
       });
 
-      const pages: PageConnection[] = response.data.data.map((p: any) => new PageConnection(
+      const pages: PageConnection[] = response.data.data.map((p: any) => new FacebookConnection(
         p.access_token,
         p.id,
-        Platforms.Facebook,
         p.name
       ));
 
@@ -77,12 +77,7 @@ export class MetaAuthController implements AuthController{
             }
           });
           if (igResponse.data.instagram_business_account) {
-            instagramBusinessAccounts.push({
-              pageId: igResponse.data.instagram_business_account.id,
-              name: page.name,
-              platform: Platforms.Instagram,
-              accessToken: page.accessToken,
-            });
+            instagramBusinessAccounts.push( new InstagramConnection(page.accessToken, igResponse.data.instagram_business_account.id, page.name));
           }
         }
       }

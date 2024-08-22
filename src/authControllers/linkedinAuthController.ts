@@ -1,5 +1,7 @@
-import { oauthCredential, PageConnection, Platforms, Token } from "../types";
+import { oauthCredential, Platforms, Token } from "../types";
+
 import { AuthController } from "./authController";
+import { PageConnection } from "../postControllers";
 
 const axios = require('axios');
 
