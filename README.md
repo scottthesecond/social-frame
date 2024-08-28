@@ -39,7 +39,7 @@ To add your post to the social platforms, use the `createPost` method on either 
     linkedInConnection.createPost(post);
 ```
 
-And thats it!  SocialTable handles the rest.
+And thats it!  social-frame handles the rest.
 
 ## Installation
 Eventually, I will publish this as a package, but while I'm testing this in my own packages, it is probably best to clone this as a submodule and import. 
