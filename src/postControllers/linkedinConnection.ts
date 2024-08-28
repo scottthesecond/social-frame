@@ -12,9 +12,9 @@ export class LinkedInConnection implements PageConnection{
 
     public accessToken: string;
     public pageId: string;
-    public name: string;
+    public name?: string;
 
-    constructor(accessToken: string, pageId: string, name: string){
+    constructor(accessToken: string, pageId: string, name?: string){
         this.accessToken = accessToken;
         this.pageId = pageId;
         this.name = name;

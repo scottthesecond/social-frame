@@ -3,4 +3,4 @@ export * from './post';
 export * from './status';
 export * from './connection';
 export * from './token';
-export * from './platforms'
+export * from './platforms.enum'

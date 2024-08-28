@@ -1,6 +1,6 @@
 import { oauthCredential, Platforms, Token } from "../types";
 
-import { AuthController } from "./authController";
+import { AuthController } from "./authController.interface";
 import { LinkedInConnection, PageConnection } from "../postControllers";
 
 const axios = require('axios');

@@ -1,5 +1,5 @@
 import { oauthCredential, Platforms, Token } from "../types";
-import { AuthController } from "./authController";
+import { AuthController } from "./authController.interface";
 import { FacebookConnection, InstagramConnection, PageConnection } from "../postControllers";
 
 const axios = require('axios');
