@@ -42,5 +42,5 @@ git submodule update
 
 Then, import the post controllers and types you will need to make your post.  For example, to post on Facebook and Linkedin:
 ```ts
-import { Post, FacebookConnection, LinkedInConnection } from '@/../../../social-frame/src'
+import { Post, FacebookConnection, LinkedInConnection } from '@/../path/to/repo/root/social-frame/src'
 ```
