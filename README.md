@@ -30,7 +30,7 @@ To add your post to the social platforms, use the `createPost` method on either 
 And thats it!  SocialTable handles the rest.
 
 ## Installation
-Eventually, I will publish thas as a package, but while I'm testing this in my own packages, it is probably best to clone this as a submodule and import. 
+Eventually, I will publish this as a package, but while I'm testing this in my own packages, it is probably best to clone this as a submodule and import. 
 
 Navigate to your existing repo and clone social-frame:
 ```bash
@@ -38,4 +38,9 @@ cd /path/to/repo
 git submodule add https://github.com/scottthesecond/social-frame.git
 git submodule init
 git submodule update
+```
+
+Then, import the post controllers and types you will need to make your post.  For example, to post on Facebook and Linkedin:
+```ts
+import { Post, FacebookConnection, LinkedInConnection } from '@/../../../social-frame/src'
 ```
