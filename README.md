@@ -1,31 +1,17 @@
 # social-frame
 A wrapper for social network API's to make it easier to post to multiple platforms.  The goal is to provide a single, unified syntax to post across various social networks.  
 
-## SOCIAL-FRAME IS A WORK-IN-PROGRESS!
-It *does* work, but features are pretty limited.  For now, here's what you can
+## This is a work-in-progress.
+It *does* work, but features are pretty limited.  For now, here's what you can do:
 - post images,
 - post links, and
 - create text posts
+
 on these platforms:
 - Facebook
 - Instagram
 - Linkedin
 
-### Roadmap:
-In order of priority
-1) Support Video Posts
-2) Better documentation, especially for authentication
-3) Unit tests
-4) Additional platforms
-    - TikTok
-    - X
-    - Mastadon
-
-Some pie-in-the-sky ideas for the distant future:
-- Unified way to access messages/dms from the different platforms?
-
-### Think this would be useful for you, too?
-This is a bit of a passion project for me, and I'm busy as hell.  It's currently my top side-project, but I'm not making as much progress as I'd like – if you think you can help with anything of the above feel free to make contributions! 
 
 ## Usage
 Facebook, Linkedin, Twitter, and all the rest handle social media content differently, and, as someone who has tried, it is a massive pain in the dick to automate posting to each social platform without using an app like Buffer or Hootsuite.  
@@ -70,3 +56,19 @@ Then, import the post controllers and types you will need to make your post.  Fo
 ```ts
 import { Post, FacebookConnection, LinkedInConnection } from '@/../path/to/repo/root/social-frame/src'
 ```
+
+## Roadmap:
+In order of priority:
+1) Support Video Posts
+2) Better documentation, especially for authentication
+3) Unit tests
+4) Additional platforms
+    - TikTok
+    - X
+    - Mastadon
+
+Some pie-in-the-sky ideas for the distant future:
+- Unified way to access messages/dms from the different platforms?
+
+### Think this would be useful for you, too?
+This is a bit of a passion project for me, and I'm busy as hell.  It's currently my top side-project, but I'm not making as much progress as I'd like – if you think you can help with anything of the above feel free to make contributions! 
